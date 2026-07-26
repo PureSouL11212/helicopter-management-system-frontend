@@ -36,6 +36,14 @@ export class AuthService {
   getProfile() {
     return this.http.get('/api/profile/');
   }
+
+  register(user: any) {
+  return this.http.post(
+    'http://127.0.0.1:8000/api/register/',
+    user
+  );
 }
+}
+
 
 

@@ -1,0 +1,162 @@
+<div class="login-container">
+  <div class="login-card">
+
+    <!-- Logo -->
+    <div class="logo-section">
+      <!-- Add your logo here if needed -->
+    </div>
+
+    <!-- Title -->
+    <h2 class="login-title">Create Account</h2>
+
+    <p class="login-subtitle">
+      Sign up for the Helicopter Management System
+    </p>
+
+    <!-- Signup Form -->
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+
+      <!-- Username -->
+      <div class="form-group">
+        <label for="username">Username</label>
+
+        <input
+          type="text"
+          id="username"
+          formControlName="username"
+          placeholder="Enter username"
+        >
+
+        <div *ngIf="signupForm.get('username')?.touched &&
+                    signupForm.get('username')?.errors?.['required']">
+          <small class="error">
+            Username is required.
+          </small>
+        </div>
+
+        <div *ngIf="signupForm.get('username')?.touched &&
+                    signupForm.get('username')?.errors?.['minlength']">
+          <small class="error">
+            Username must be at least 3 characters.
+          </small>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email</label>
+
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="Enter your email"
+        >
+
+        <div *ngIf="signupForm.get('email')?.touched &&
+                    signupForm.get('email')?.errors?.['required']">
+          <small class="error">
+            Email is required.
+          </small>
+        </div>
+
+        <div *ngIf="signupForm.get('email')?.touched &&
+                    signupForm.get('email')?.errors?.['email']">
+          <small class="error">
+            Please enter a valid email address.
+          </small>
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">Password</label>
+
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          placeholder="Enter password"
+        >
+
+        <div *ngIf="signupForm.get('password')?.touched &&
+                    signupForm.get('password')?.errors?.['required']">
+          <small class="error">
+            Password is required.
+          </small>
+        </div>
+
+        <div *ngIf="signupForm.get('password')?.touched &&
+                    signupForm.get('password')?.errors?.['minlength']">
+          <small class="error">
+            Password must be at least 8 characters.
+          </small>
+        </div>
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+
+        <input
+          type="password"
+          id="confirmPassword"
+          formControlName="confirmPassword"
+          placeholder="Confirm password"
+        >
+
+        <div *ngIf="signupForm.get('confirmPassword')?.touched &&
+                    signupForm.get('confirmPassword')?.errors?.['required']">
+          <small class="error">
+            Confirm Password is required.
+          </small>
+        </div>
+
+        <div *ngIf="signupForm.hasError('passwordMismatch') &&
+                    signupForm.get('confirmPassword')?.touched">
+          <small class="error">
+            Passwords do not match.
+          </small>
+        </div>
+      </div>
+
+      <!-- Register Button -->
+      <button
+        type="submit"
+        class="login-btn"
+        [disabled]="loading">
+
+        <span *ngIf="!loading">
+          Sign Up
+        </span>
+
+        <span *ngIf="loading">
+          <span class="spinner"></span>
+          Creating Account...
+        </span>
+
+      </button>
+
+      <!-- Error -->
+      <div *ngIf="errorMessage" class="error-box">
+        {{ errorMessage }}
+      </div>
+
+      <!-- Success -->
+      <div *ngIf="successMessage" class="success-box">
+        {{ successMessage }}
+      </div>
+
+      <!-- Login Link -->
+      <div class="forgot-password">
+        Already have an account?
+
+        <a routerLink="/login">
+          Login
+        </a>
+      </div>
+
+    </form>
+
+  </div>
+</div>

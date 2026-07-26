@@ -29,12 +29,12 @@
 }
 
 /* ==========================
-   Login Card
+   Card
 ========================== */
 
 .login-card {
   width: 100%;
-  max-width: 420px;
+  max-width: 450px;
   background: #ffffff;
   border-radius: 16px;
   padding: 40px;
@@ -125,22 +125,71 @@
   transition: 0.3s;
 }
 
-.login-btn:hover {
+.login-btn:hover:not(:disabled) {
   background: #1565c0;
 }
 
+.login-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
 /* ==========================
-   Forgot Password
+   Validation Errors
+========================== */
+
+.error {
+  color: #dc3545;
+  font-size: 0.85rem;
+  margin-top: 4px;
+  display: block;
+}
+
+/* ==========================
+   Error Message
+========================== */
+
+.error-box {
+  margin-top: 15px;
+  padding: 12px;
+  background: #ffe5e5;
+  color: #d32f2f;
+  border: 1px solid #f5c2c2;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* ==========================
+   Success Message
+========================== */
+
+.success-box {
+  margin-top: 15px;
+  padding: 12px;
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #b7dfba;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* ==========================
+   Login Link
 ========================== */
 
 .forgot-password {
-  margin-top: 18px;
+  margin-top: 20px;
   text-align: center;
+  color: #555;
 }
 
 .forgot-password a {
   color: #1976d2;
   text-decoration: none;
+  font-weight: 600;
+  margin-left: 5px;
 }
 
 .forgot-password a:hover {
@@ -148,55 +197,58 @@
 }
 
 /* ==========================
-   Sign Up Link
+   Spinner
 ========================== */
 
-.signup-link {
-  margin-top: 18px;
-  text-align: center;
-  color: #555;
-  font-size: 15px;
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  border: 2px solid white;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  vertical-align: middle;
 }
 
-.signup-link a {
-  color: #1976d2;
-  text-decoration: none;
-  font-weight: 600;
-  margin-left: 5px;
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.signup-link a:hover {
-  text-decoration: underline;
-}
-
-/* ==========================================
-   Large Desktop (1920px+)
-========================================== */
+/* ==========================
+   Desktop
+========================== */
 
 @media (min-width: 1600px) {
 
   .login-card {
-    max-width: 450px;
+    max-width: 500px;
     padding: 48px;
   }
 
 }
 
-/* ==========================================
-   Laptop (1366px)
-========================================== */
+/* ==========================
+   Laptop
+========================== */
 
 @media (max-width: 1366px) {
 
   .login-card {
-    max-width: 420px;
+    max-width: 450px;
   }
 
 }
 
-/* ==========================================
-   Tablet (768px)
-========================================== */
+/* ==========================
+   Tablet
+========================== */
 
 @media (max-width: 768px) {
 
@@ -215,9 +267,9 @@
 
 }
 
-/* ==========================================
-   Mobile (375px)
-========================================== */
+/* ==========================
+   Mobile
+========================== */
 
 @media (max-width: 480px) {
 
@@ -255,49 +307,8 @@
     font-size: 15px;
   }
 
-  .error {
-  color: #dc3545;
-  font-size: 0.85rem;
-  margin-top: 4px;
-  display: block;
-}
-
-}
-
-.error-box {
-  margin-top: 15px;
-  padding: 12px;
-  background: #ffe5e5;
-  color: #d32f2f;
-  border: 1px solid #f5c2c2;
-  border-radius: 6px;
-  text-align: center;
-  font-size: 14px;
-}
-
-.login-btn:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-.spinner {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  margin-right: 8px;
-  border: 2px solid white;
-  border-top: 2px solid transparent;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-  vertical-align: middle;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
+  .forgot-password {
+    font-size: 14px;
   }
 
-  to {
-    transform: rotate(360deg);
-  }
 }
