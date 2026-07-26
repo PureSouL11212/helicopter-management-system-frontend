@@ -6,9 +6,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-
-  // Django Login API (use relative paths to avoid mixed-content in HTTPS)
-  private apiUrl = '/api/login/';
+  // Backend base URL (use the same host for all auth calls)
+  // Change to your backend host if different (e.g. deployed server)
+  private baseUrl = 'http://127.0.0.1:8000';
+  private apiUrl = `${this.baseUrl}/api/login/`;
 
   constructor(private http: HttpClient) {}
 
@@ -34,14 +35,11 @@ export class AuthService {
   }
 
   getProfile() {
-    return this.http.get('/api/profile/');
+    return this.http.get(`${this.baseUrl}/api/profile/`);
   }
 
   register(user: any) {
-  return this.http.post(
-    'http://127.0.0.1:8000/api/register/',
-    user
-  );
+  return this.http.post(`${this.baseUrl}/api/register/`, user);
 }
 }
 
