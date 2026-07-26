@@ -1,0 +1,90 @@
+<div class="login-container">
+  <div class="login-card">
+
+    <!-- Logo (Optional) -->
+    <div class="logo-section">
+      <!-- Replace with your project logo -->
+      
+    </div>
+
+    <!-- Page Title -->
+    <h2 class="login-title">Login</h2>
+    <p class="login-subtitle">
+      Sign in to your Helicopter Management System account
+    </p>
+
+    <!-- Login Form -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="Enter your email"
+        >
+        <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['required']">
+          <small class="error">Email is required.</small>
+        </div>
+
+        <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['email']">
+          <small class="error">Please enter a valid email address.</small>
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          placeholder="Enter your password"
+        >
+        <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['required']">
+          <small class="error">Password is required.</small>
+        </div>
+
+        <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['minlength']">
+          <small class="error">Password must be at least 8 characters.</small>
+        </div>
+      </div>
+
+      <!-- Login Button -->
+     <button
+  type="submit"
+  class="login-btn"
+  [disabled]="loading">
+
+  @if (!loading) {
+    Login
+  }
+
+  @if (loading) {
+    <span class="spinner"></span>
+    Logging in...
+  }
+
+</button>
+
+      <div *ngIf="errorMessage" class="error-box">{{ errorMessage }}</div>
+
+      <!-- Forgot Password -->
+      <div class="forgot-password">
+        <a href="#">Forgot Password?</a>
+      </div>
+      <div class="signup-link">
+    <p>
+    Don't have an account?
+    <a routerLink="/signup">Sign Up</a>
+  </p>
+</div>
+
+    </form>
+
+  </div>
+</div>
+
+
